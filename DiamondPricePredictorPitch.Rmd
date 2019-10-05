@@ -65,3 +65,6 @@ Access the app via the below link:
 
 Github link to app source code:  
 [Diamond Value App source](https://github.com/pourkhesalian/Shiny-Application-and-Reproducible-Pitch)
+
+This presentation in Github:  
+[The presentation](https://pourkhesalian.github.io/Shiny-Application-and-Reproducible-Pitch/DiamondPricePredictorPitch.html#1)
