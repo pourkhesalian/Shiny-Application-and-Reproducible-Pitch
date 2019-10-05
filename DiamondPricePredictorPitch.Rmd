@@ -1,0 +1,67 @@
+---
+title: "Diamond Value Predictor Shiny App"
+author: "Ali Pourkhesalian"
+date: "05/10/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE, warning=FALSE, comment="", message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(dplyr)
+data("diamonds")
+
+```
+
+## What is the app?
+
+This Shiny App estimates the value of a diamond with the characteristics specified by the user. The characteristics that user can choose are as following:  
+
+1. Diamond Cut Quality: `r  sort(unique(diamonds$cut), decreasing = T)`  
+2. Diamond Color: `r  sort(unique(diamonds$color), decreasing = T)`  
+3. Diamond Clarity: `r  sort(unique(diamonds$clarity), decreasing = T)`  
+4. Diamond Weight in carats: 0.2-2.5 carats  
+
+Using the above-mentioned inputs, the app uses a dataset in R named "diamonds" to fit a linear model and estimate the value of the diamond.  
+
+
+## The Dateset
+
+The `diamond` dataset in R can be found in the `ggplot2` package. Below a brief summary of the dataset is shown:  
+
+
+```{r echo=FALSE, comment=""}
+head(diamonds[,c(1:4,7)],4)
+summary(diamonds[,c(1:4,7)])
+```
+
+## The App 
+
+```{r cars, echo = FALSE}
+diamond.filtered <- diamonds %>%
+                filter(cut == diamonds$cut[1],
+                       color == diamonds$color[2],
+                       clarity == diamonds$clarity[2])
+             plot(x= diamond.filtered$carat, 
+                      y= diamond.filtered$price, 
+                      col='blue',
+                      xlab = 'Diamond Weight (Carat)',
+                      ylab = 'Diamond Price (USD)',
+                  main = 'Diamond value VS Diamond weight')
+            lines(diamond.filtered$carat, 
+                  fitted(
+                      lm(price~carat, 
+                            data = diamond.filtered))
+                  , col='red')
+
+```
+When the user chooses the required diamond characterstics, the app plots the data points (the blue circles) used to fit the model along with the model (the red line) and the price estimation with the corresponding prediction interval.
+
+
+## Links 
+
+Access the app via the below link:  
+[Diamond Value Predictor App](https://pourkhesalian.shinyapps.io/DiamondPricePredictor/)
+
+Github link to app source code:  
+[Diamond Value App source](https://github.com/pourkhesalian/Shiny-Application-and-Reproducible-Pitch)

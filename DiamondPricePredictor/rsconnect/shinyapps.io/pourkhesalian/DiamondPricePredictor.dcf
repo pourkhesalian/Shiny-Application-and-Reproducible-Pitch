@@ -1,0 +1,12 @@
+name: DiamondPricePredictor
+title: DiamondPricePredictor
+username:
+account: pourkhesalian
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1289306
+bundleId: 2470874
+url: https://pourkhesalian.shinyapps.io/DiamondPricePredictor/
+when: 1570268135.88573
+asMultiple: FALSE
+asStatic: FALSE
